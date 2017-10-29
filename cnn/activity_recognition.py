@@ -5,15 +5,10 @@
 """
 
 import os
-
-# This is for showing the Tensorflow log
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 import numpy as np
 import tensorflow as tf
 
-
-# This is for parsing the X data, you can ignore it if you do not need preprocessing
+# 處理 data X
 def format_data_x(datafile):
     x_data = None
     for item in datafile:
@@ -34,15 +29,14 @@ def format_data_x(datafile):
     return X
 
 
-# This is for parsing the Y data, you can ignore it if you do not need preprocessing
+# 處理 data Y
 def format_data_y(datafile):
     data = np.loadtxt(datafile, dtype=np.int) - 1
     YY = np.eye(6)[data]
     return YY
 
 
-# Load data function, if there exists parsed data file, then use it
-# If not, parse the original dataset from scratch
+# 讀 .npz 或是直接讀 jpg
 def load_data():
     import os
     if os.path.isfile('data/data_har.npz') == True:
@@ -52,6 +46,8 @@ def load_data():
         X_test = data['X_test']
         Y_test = data['Y_test']
     else:
+        # 資料從這裡下載：https://archive.ics.uci.edu/ml/machine-learning-databases/00240/
+
         # This for processing the dataset from scratch
         # After downloading the dataset, put it to somewhere that str_folder can find
         str_folder = 'mydat/' + 'UCI HAR Dataset/'
@@ -73,6 +69,7 @@ def load_data():
         str_train_y = str_folder + 'train/y_train.txt'
         str_test_y = str_folder + 'test/y_test.txt'
 
+        # 把 txt 的各種加速器數據轉成可以train的格式
         X_train = format_data_x(str_train_files)
         X_test = format_data_x(str_test_files)
         Y_train = format_data_y(str_train_y)
@@ -81,7 +78,8 @@ def load_data():
     return X_train, Y_train, X_test, Y_test
 
 
-# A class for some hyperparameters
+# 一些 config，像是 learning_ rate、batch_size etc
+# 開一個 class 存需要的config
 class Config(object):
     def __init__(self, X_train, Y_train):
         self.n_input = len(X_train[0])  # number of input neurons to the network
@@ -89,16 +87,21 @@ class Config(object):
         self.dropout = 0.8  # dropout, between 0 and 1
         self.learning_rate = 0.001  # learning rate, float
         self.training_epoch = 20  # training epoch
-        self.n_channel = 9  # number of input channel
+        self.n_channel = 9  # number of input channel # 如果是image的話，就是 RGB=3, gray=1
         self.input_height = 128  # input height
         self.input_width = 1  # input width
         self.kernel_size = 64  # number of convolution kernel size
-        self.depth = 32  # number of convolutions
+        self.depth = 32  # number of convolutions # 自訂，但跟下一層的wc2的depth要能接在一起
         self.batch_size = 16  # batch size
         self.show_progress = 50  # how many batches to show the progress
 
         # weights and biases definition
         self.weights = {
+            # 比較：
+            # 5x5 conv, 1 input（就是灰色）, 32 outputs（自訂的）
+            # 'wc1': tf.Variable(tf.random_normal([5, 5, 1, 32])),
+            # [width, kernel_size, n_channel, depth]
+
             'wc1': tf.Variable(tf.random_normal([1, self.kernel_size, self.n_channel, self.depth])),
             'wc2': tf.Variable(tf.random_normal([1, self.kernel_size, self.depth, 64])),
             'wd1': tf.Variable(tf.random_normal([32 * 32 * 2, 1000])),
@@ -131,7 +134,7 @@ def maxpool1d(x, kernel_size, stride):
 
 # network definition
 def conv_net(x, W, b, dropout):
-    conv1 = conv1d(x, W['wc1'], b['bc1'], 1)
+    conv1 = conv1d(x, W['wc1'], b['bc1'], 1) # 他用的是 conv1d, 不像範例是 5x5 的 conv2d
     conv1 = maxpool1d(conv1, 2, stride=2)
     conv2 = conv1d(conv1, W['wc2'], b['bc2'], 1)
     conv2 = maxpool1d(conv2, 2, stride=2)
@@ -158,22 +161,23 @@ def network(X_train, Y_train, X_test, Y_test):
     Y = tf.placeholder(tf.float32, shape=[None, config.n_output])
     keep_prob = tf.placeholder(tf.float32)
 
-    y_pred = conv_net(X, config.weights, config.biases, config.dropout)
-    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=y_pred))
-    optimizer = tf.train.AdamOptimizer(learning_rate=config.learning_rate).minimize(cost)
+    y_pred = conv_net(X, config.weights, config.biases, config.dropout) # logits
+    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=y_pred)) # loss_op
+    optimizer = tf.train.AdamOptimizer(learning_rate=config.learning_rate).minimize(cost) # optimizer
 
-    correct_pred = tf.equal(tf.arg_max(y_pred, 1), tf.argmax(Y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+    correct_pred = tf.equal(tf.arg_max(y_pred, 1), tf.argmax(Y, 1)) # correct_pred
+    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32)) # accuracy
 
-    total_batch = len(X_train) // config.batch_size
+    total_batch = len(X_train) // config.batch_size 
 
-    init = tf.global_variables_initializer()
+    init = tf.global_variables_initializer() #same
     with tf.Session() as sess:
         sess.run(init)
-        for i in range(config.training_epoch):
-            for j in range(total_batch):
+        for i in range(config.training_epoch): # 在每個 epoch 內
+            for j in range(total_batch): # 一次的batch 多大
                 x_train_batch, y_train_batch = X_train[j * config.batch_size: config.batch_size * (j + 1)], \
                                                Y_train[j * config.batch_size: config.batch_size * (j + 1)]
+                # 一次拿 [batch, height=128, width=1, channel=9] 的大小
                 x_train_batch = np.reshape(x_train_batch, [len(x_train_batch), 128, 1, 9])
                 sess.run(optimizer, feed_dict={X: x_train_batch, Y: y_train_batch, keep_prob: config.dropout})
                 if j % config.show_progress == 0:
