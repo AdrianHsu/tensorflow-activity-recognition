@@ -1,0 +1,138 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CIFAR10InputTest	cifar10_input_test.py	/^class CIFAR10InputTest(tf.test.TestCase):$/;"	c
+CIFAR10Record	cifar10_input.py	/^  class CIFAR10Record(object):$/;"	c	function:read_cifar10
+DATA_URL	cifar10.py	/^DATA_URL = 'http:\/\/www.cs.toronto.edu\/~kriz\/cifar-10-binary.tar.gz'$/;"	v
+FLAGS	cifar10.py	/^FLAGS = parser.parse_args()$/;"	v
+IMAGE_SIZE	cifar10.py	/^IMAGE_SIZE = cifar10_input.IMAGE_SIZE$/;"	v
+IMAGE_SIZE	cifar10_input.py	/^IMAGE_SIZE = 24$/;"	v
+INITIAL_LEARNING_RATE	cifar10.py	/^INITIAL_LEARNING_RATE = 0.1       # Initial learning rate.$/;"	v
+LEARNING_RATE_DECAY_FACTOR	cifar10.py	/^LEARNING_RATE_DECAY_FACTOR = 0.1  # Learning rate decay factor.$/;"	v
+MOVING_AVERAGE_DECAY	cifar10.py	/^MOVING_AVERAGE_DECAY = 0.9999     # The decay to use for the moving average.$/;"	v
+NUM_CLASSES	cifar10.py	/^NUM_CLASSES = cifar10_input.NUM_CLASSES$/;"	v
+NUM_CLASSES	cifar10_input.py	/^NUM_CLASSES = 10$/;"	v
+NUM_EPOCHS_PER_DECAY	cifar10.py	/^NUM_EPOCHS_PER_DECAY = 350.0      # Epochs after which learning rate decays.$/;"	v
+NUM_EXAMPLES_PER_EPOCH_FOR_EVAL	cifar10.py	/^NUM_EXAMPLES_PER_EPOCH_FOR_EVAL = cifar10_input.NUM_EXAMPLES_PER_EPOCH_FOR_EVAL$/;"	v
+NUM_EXAMPLES_PER_EPOCH_FOR_EVAL	cifar10_input.py	/^NUM_EXAMPLES_PER_EPOCH_FOR_EVAL = 10000$/;"	v
+NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN	cifar10.py	/^NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = cifar10_input.NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN$/;"	v
+NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN	cifar10_input.py	/^NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 50000$/;"	v
+TOWER_NAME	cifar10.py	/^TOWER_NAME = 'tower'$/;"	v
+_LoggerHook	cifar10_train.py	/^    class _LoggerHook(tf.train.SessionRunHook):$/;"	c	function:train
+_activation_summary	cifar10.py	/^def _activation_summary(x):$/;"	f
+_add_loss_summaries	cifar10.py	/^def _add_loss_summaries(total_loss):$/;"	f
+_generate_image_and_label_batch	cifar10_input.py	/^def _generate_image_and_label_batch(image, label, min_queue_examples,$/;"	f
+_progress	cifar10.py	/^    def _progress(count, block_size, total_size):$/;"	f	function:maybe_download_and_extract
+_record	cifar10_input_test.py	/^  def _record(self, label, red, green, blue):$/;"	m	class:CIFAR10InputTest
+_variable_on_cpu	cifar10.py	/^def _variable_on_cpu(name, shape, initializer):$/;"	f
+_variable_with_weight_decay	cifar10.py	/^def _variable_with_weight_decay(name, shape, stddev, wd):$/;"	f
+absolute_import	__init__.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10_eval.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10_input.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10_input_test.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10_multi_gpu_train.py	/^from __future__ import absolute_import$/;"	i
+absolute_import	cifar10_train.py	/^from __future__ import absolute_import$/;"	i
+after_run	cifar10_train.py	/^      def after_run(self, run_context, run_values):$/;"	m	class:train._LoggerHook
+argparse	cifar10.py	/^import argparse$/;"	i
+average_gradients	cifar10_multi_gpu_train.py	/^def average_gradients(tower_grads):$/;"	f
+before_run	cifar10_train.py	/^      def before_run(self, run_context):$/;"	m	class:train._LoggerHook
+begin	cifar10_train.py	/^      def begin(self):$/;"	m	class:train._LoggerHook
+builtin	cifar10_input.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+builtin	cifar10_multi_gpu_train.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+cifar10	__init__.py	/^import cifar10$/;"	i
+cifar10	cifar10_eval.py	/^import cifar10$/;"	i
+cifar10	cifar10_multi_gpu_train.py	/^import cifar10$/;"	i
+cifar10	cifar10_train.py	/^import cifar10$/;"	i
+cifar10_input	__init__.py	/^import cifar10_input$/;"	i
+cifar10_input	cifar10.py	/^import cifar10_input$/;"	i
+cifar10_input	cifar10_input_test.py	/^import cifar10_input$/;"	i
+datetime	cifar10_eval.py	/^from datetime import datetime$/;"	i
+datetime	cifar10_multi_gpu_train.py	/^from datetime import datetime$/;"	i
+datetime	cifar10_train.py	/^from datetime import datetime$/;"	i
+disable	cifar10_input.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+disable	cifar10_multi_gpu_train.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+distorted_inputs	cifar10.py	/^def distorted_inputs():$/;"	f
+distorted_inputs	cifar10_input.py	/^def distorted_inputs(data_dir, batch_size):$/;"	f
+division	__init__.py	/^from __future__ import division$/;"	i
+division	cifar10.py	/^from __future__ import division$/;"	i
+division	cifar10_eval.py	/^from __future__ import division$/;"	i
+division	cifar10_input.py	/^from __future__ import division$/;"	i
+division	cifar10_input_test.py	/^from __future__ import division$/;"	i
+division	cifar10_multi_gpu_train.py	/^from __future__ import division$/;"	i
+division	cifar10_train.py	/^from __future__ import division$/;"	i
+eval_once	cifar10_eval.py	/^def eval_once(saver, summary_writer, top_k_op, summary_op):$/;"	f
+evaluate	cifar10_eval.py	/^def evaluate():$/;"	f
+help	cifar10.py	/^                    help='Number of images to process in a batch.')$/;"	v
+help	cifar10.py	/^                    help='Path to the CIFAR-10 data directory.')$/;"	v
+help	cifar10.py	/^                    help='Train the model using fp16.')$/;"	v
+help	cifar10_eval.py	/^                    help='Directory where to read model checkpoints.')$/;"	v
+help	cifar10_eval.py	/^                    help='Directory where to write event logs.')$/;"	v
+help	cifar10_eval.py	/^                    help='Either `test` or `train_eval`.')$/;"	v
+help	cifar10_eval.py	/^                    help='How often to run the eval.')$/;"	v
+help	cifar10_eval.py	/^                    help='Number of examples to run.')$/;"	v
+help	cifar10_eval.py	/^                    help='Whether to run eval only once.')$/;"	v
+help	cifar10_multi_gpu_train.py	/^                    help='Directory where to write event logs and checkpoint.')$/;"	v
+help	cifar10_multi_gpu_train.py	/^                    help='How many GPUs to use.')$/;"	v
+help	cifar10_multi_gpu_train.py	/^                    help='Number of batches to run.')$/;"	v
+help	cifar10_multi_gpu_train.py	/^                    help='Whether to log device placement.')$/;"	v
+help	cifar10_train.py	/^                    help='Directory where to write event logs and checkpoint.')$/;"	v
+help	cifar10_train.py	/^                    help='How often to log results to the console.')$/;"	v
+help	cifar10_train.py	/^                    help='Number of batches to run.')$/;"	v
+help	cifar10_train.py	/^                    help='Whether to log device placement.')$/;"	v
+inference	cifar10.py	/^def inference(images):$/;"	f
+inputs	cifar10.py	/^def inputs(eval_data):$/;"	f
+inputs	cifar10_input.py	/^def inputs(eval_data, data_dir, batch_size):$/;"	f
+loss	cifar10.py	/^def loss(logits, labels):$/;"	f
+main	cifar10_eval.py	/^def main(argv=None):  # pylint: disable=unused-argument$/;"	f
+main	cifar10_multi_gpu_train.py	/^def main(argv=None):  # pylint: disable=unused-argument$/;"	f
+main	cifar10_train.py	/^def main(argv=None):  # pylint: disable=unused-argument$/;"	f
+math	cifar10_eval.py	/^import math$/;"	i
+maybe_download_and_extract	cifar10.py	/^def maybe_download_and_extract():$/;"	f
+np	cifar10_eval.py	/^import numpy as np$/;"	i
+np	cifar10_multi_gpu_train.py	/^import numpy as np$/;"	i
+os	cifar10.py	/^import os$/;"	i
+os	cifar10_input.py	/^import os$/;"	i
+os	cifar10_input_test.py	/^import os$/;"	i
+os	cifar10_multi_gpu_train.py	/^import os.path$/;"	i
+parser	cifar10.py	/^parser = argparse.ArgumentParser()$/;"	v
+parser	cifar10_eval.py	/^parser = cifar10.parser$/;"	v
+parser	cifar10_multi_gpu_train.py	/^parser = cifar10.parser$/;"	v
+parser	cifar10_train.py	/^parser = cifar10.parser$/;"	v
+path	cifar10_multi_gpu_train.py	/^import os.path$/;"	i
+print_function	__init__.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10_eval.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10_input.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10_input_test.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10_multi_gpu_train.py	/^from __future__ import print_function$/;"	i
+print_function	cifar10_train.py	/^from __future__ import print_function$/;"	i
+pylint	cifar10_input.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+pylint	cifar10_multi_gpu_train.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+re	cifar10.py	/^import re$/;"	i
+re	cifar10_multi_gpu_train.py	/^import re$/;"	i
+read_cifar10	cifar10_input.py	/^def read_cifar10(filename_queue):$/;"	f
+redefined	cifar10_input.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+redefined	cifar10_multi_gpu_train.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+sys	cifar10.py	/^import sys$/;"	i
+tarfile	cifar10.py	/^import tarfile$/;"	i
+testSimple	cifar10_input_test.py	/^  def testSimple(self):$/;"	m	class:CIFAR10InputTest
+tf	cifar10.py	/^import tensorflow as tf$/;"	i
+tf	cifar10_eval.py	/^import tensorflow as tf$/;"	i
+tf	cifar10_input.py	/^import tensorflow as tf$/;"	i
+tf	cifar10_input_test.py	/^import tensorflow as tf$/;"	i
+tf	cifar10_multi_gpu_train.py	/^import tensorflow as tf$/;"	i
+tf	cifar10_train.py	/^import tensorflow as tf$/;"	i
+time	cifar10_eval.py	/^import time$/;"	i
+time	cifar10_multi_gpu_train.py	/^import time$/;"	i
+time	cifar10_train.py	/^import time$/;"	i
+tower_loss	cifar10_multi_gpu_train.py	/^def tower_loss(scope, images, labels):$/;"	f
+train	cifar10.py	/^def train(total_loss, global_step):$/;"	f
+train	cifar10_multi_gpu_train.py	/^def train():$/;"	f
+train	cifar10_train.py	/^def train():$/;"	f
+urllib	cifar10.py	/^from six.moves import urllib$/;"	i
+xrange	cifar10_input.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
+xrange	cifar10_multi_gpu_train.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	i
